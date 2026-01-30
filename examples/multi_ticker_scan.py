@@ -5,13 +5,9 @@ Multi-ticker screening example.
 Scan multiple tickers and find the best opportunities across all of them.
 """
 
-import sys
-import os
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-from models import SpreadType, ScreeningCriteria
-from spread_screener import CreditSpreadScreener, create_mock_spread
-from spread_optimizer import SpreadOptimizer
+from cso.models import SpreadType, ScreeningCriteria
+from cso.spread_screener import CreditSpreadScreener, create_mock_spread
+from cso.spread_optimizer import SpreadOptimizer
 
 
 def generate_candidates(ticker: str, spot: float, num_spreads: int = 5):

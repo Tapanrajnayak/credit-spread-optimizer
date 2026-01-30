@@ -9,12 +9,8 @@ Demonstrates:
 4. Analyzing results
 """
 
-import sys
-import os
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-from models import SpreadType, ScreeningCriteria, OptimizationWeights
-from spread_screener import CreditSpreadScreener, create_mock_spread
+from cso.models import SpreadType, ScreeningCriteria, OptimizationWeights
+from cso.spread_screener import CreditSpreadScreener, create_mock_spread
 
 
 def main():

@@ -3,7 +3,7 @@
 Setup script for credit-spread-optimizer.
 """
 
-from setuptools import setup, find_packages
+from setuptools import setup
 
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
@@ -17,13 +17,7 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/Tapanrajnayak/credit-spread-optimizer",
-    py_modules=[
-        "models",
-        "filters",
-        "analyzers",
-        "spread_optimizer",
-        "spread_screener",
-    ],
+    packages=["cso"],
     classifiers=[
         "Development Status :: 4 - Beta",
         "Intended Audience :: Financial and Insurance Industry",
@@ -42,6 +36,9 @@ setup(
         "pandas>=1.3.0",
     ],
     extras_require={
+        "live": [
+            "yfinance>=0.2.0",
+        ],
         "dev": [
             "pytest>=7.0.0",
             "pytest-cov>=3.0.0",

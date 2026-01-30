@@ -5,18 +5,14 @@ Main credit spread screening engine.
 Provides high-level interface for screening and finding optimal credit spreads.
 """
 
-import sys
-import os
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../python-options-core'))
-
 from typing import List, Optional
-from models import (
+from .models import (
     CreditSpread, SpreadType, ScreeningCriteria,
     ScreeningResult, OptimizationWeights
 )
-from filters import passes_all_filters, get_failed_filters
-from analyzers import SpreadAnalyzer
-from spread_optimizer import SpreadOptimizer
+from .filters import passes_all_filters, get_failed_filters
+from .analyzers import SpreadAnalyzer
+from .spread_optimizer import SpreadOptimizer
 
 
 class CreditSpreadScreener:

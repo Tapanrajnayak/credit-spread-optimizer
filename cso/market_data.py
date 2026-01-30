@@ -9,25 +9,10 @@ Integrates with python-options-core to fetch:
 - Evaluate spread quality
 """
 
-import sys
-import os
-
 from typing import List, Dict, Optional
 from datetime import datetime, timedelta
 
-# Import from local models FIRST (credit-spread-optimizer models)
-import importlib.util
-current_dir = os.path.dirname(__file__)
-
-# Import local models explicitly
-spec = importlib.util.spec_from_file_location("local_models", os.path.join(current_dir, "models.py"))
-if spec and spec.loader:
-    local_models = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(local_models)
-    CreditSpread = local_models.CreditSpread
-    SpreadType = local_models.SpreadType
-else:
-    raise ImportError("Could not import local models.py")
+from .models import CreditSpread, SpreadType
 
 # Try to import yfinance
 try:
@@ -37,32 +22,18 @@ except ImportError:
     HAS_YFINANCE = False
     print("Warning: yfinance not installed. Install with: pip install yfinance")
 
-# Import from python-options-core
+# Import from python-options-core (now in separate namespace, no collision)
 CoreOptionData = None
 CoreOptionType = None
 HAS_OPTIONS_CORE = False
 
-options_core_path = os.path.join(current_dir, '../python-options-core')
-if os.path.exists(options_core_path):
-    try:
-        # Import core models explicitly
-        spec = importlib.util.spec_from_file_location("core_models",
-            os.path.join(options_core_path, "models.py"))
-        if spec and spec.loader:
-            core_models = importlib.util.module_from_spec(spec)
-            spec.loader.exec_module(core_models)
-            CoreOptionData = core_models.OptionData
-            CoreOptionType = core_models.OptionType
-
-            # Add to path for other imports
-            if options_core_path not in sys.path:
-                sys.path.insert(0, options_core_path)
-
-            from greeks.calculator import calculate_greeks
-            from spreads.evaluator import SpreadEvaluator
-            HAS_OPTIONS_CORE = True
-    except Exception as e:
-        pass  # Silently disable if not available
+try:
+    from models import OptionData as CoreOptionData, OptionType as CoreOptionType
+    from greeks.calculator import calculate_greeks
+    from spreads.evaluator import SpreadEvaluator
+    HAS_OPTIONS_CORE = True
+except ImportError:
+    pass  # Silently disable if not available
 
 
 class OptionsChainFetcher:

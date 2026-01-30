@@ -10,12 +10,8 @@ Provides functions to calculate:
 - Return on capital
 """
 
-import sys
-import os
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../python-options-core'))
-
 from typing import Optional, List
-from models import CreditSpread, SpreadType
+from .models import CreditSpread, SpreadType
 
 
 class IVAnalyzer:

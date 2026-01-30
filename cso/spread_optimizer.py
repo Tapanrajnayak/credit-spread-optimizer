@@ -4,7 +4,7 @@ Credit spread optimizer with composite scoring and ranking.
 """
 
 from typing import List
-from models import CreditSpread, OptimizationWeights
+from .models import CreditSpread, OptimizationWeights
 
 
 class SpreadOptimizer:

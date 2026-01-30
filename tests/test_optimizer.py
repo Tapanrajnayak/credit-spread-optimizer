@@ -3,13 +3,9 @@
 Tests for spread optimizer and ranking.
 """
 
-import sys
-import os
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
 import pytest
-from models import CreditSpread, SpreadType, OptimizationWeights
-from spread_optimizer import SpreadOptimizer, SpreadComparator
+from cso.models import CreditSpread, SpreadType, OptimizationWeights
+from cso.spread_optimizer import SpreadOptimizer, SpreadComparator
 
 
 def create_test_spread(**kwargs):
@@ -29,7 +25,6 @@ def create_test_spread(**kwargs):
         "probability_profit": 0.70,
         "expected_value": 20.0,
         "return_on_capital": 10.0,
-        "theta_efficiency": 2.0,
         "max_profit": 140.0,
         "max_loss": 360.0,
     }
@@ -69,7 +64,6 @@ class TestSpreadOptimizer:
     def test_calculate_composite_score(self):
         spread = create_test_spread(
             iv_percentile=80.0,
-            theta_efficiency=1.5,
             spread_quality_rating="excellent",
             probability_profit=0.75,
             expected_value=30.0,

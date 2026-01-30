@@ -5,14 +5,12 @@ Pre-loads inputs for demonstration.
 """
 
 import sys
-import os
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from disciplined_screener import DisciplinedScreener, get_current_vix
-from disciplined_models import ScreeningConfig
+from cso.disciplined_screener import DisciplinedScreener, get_current_vix
+from cso.disciplined_models import ScreeningConfig
 
 # Import the functions from the demo
-from disciplined_screening_demo import (
+from examples.disciplined_screening_demo import (
     generate_candidates_for_ticker,
     print_banner
 )

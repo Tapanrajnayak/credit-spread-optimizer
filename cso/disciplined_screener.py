@@ -16,7 +16,6 @@ That's it.
 
 import sys
 import os
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../python-options-core'))
 
 from typing import List, Optional, Tuple
 from dataclasses import dataclass
@@ -28,7 +27,7 @@ try:
 except ImportError:
     HAS_YFINANCE = False
 
-from disciplined_models import (
+from .disciplined_models import (
     CreditSpreadCandidate,
     TradeRecommendation,
     HardFilterResult,

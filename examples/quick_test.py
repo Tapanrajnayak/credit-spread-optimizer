@@ -6,14 +6,12 @@ Non-interactive version for testing.
 """
 
 import sys
-import os
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from disciplined_screener import (
+from cso.disciplined_screener import (
     DisciplinedScreener,
     create_candidate_from_strikes
 )
-from disciplined_models import ScreeningConfig
+from cso.disciplined_models import ScreeningConfig
 
 
 def main():

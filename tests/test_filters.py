@@ -3,13 +3,9 @@
 Tests for filtering functions.
 """
 
-import sys
-import os
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
 import pytest
-from models import CreditSpread, SpreadType, ScreeningCriteria
-from filters import (
+from cso.models import CreditSpread, SpreadType, ScreeningCriteria
+from cso.filters import (
     iv_percentile_filter,
     liquidity_filter,
     spread_quality_filter,

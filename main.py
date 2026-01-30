@@ -14,12 +14,12 @@ Usage:
 import sys
 import argparse
 from typing import List
-from models import (
+from cso.models import (
     SpreadType, ScreeningCriteria, OptimizationWeights
 )
-from spread_screener import CreditSpreadScreener, create_mock_spread
-from spread_optimizer import SpreadOptimizer
-from market_data import OptionsChainFetcher
+from cso.spread_screener import CreditSpreadScreener, create_mock_spread
+from cso.spread_optimizer import SpreadOptimizer
+from cso.market_data import OptionsChainFetcher
 
 
 def parse_args():

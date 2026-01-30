@@ -5,7 +5,7 @@ Individual filter functions for credit spread screening.
 Each filter takes a CreditSpread and returns True if it passes the filter.
 """
 
-from models import CreditSpread, ScreeningCriteria
+from .models import CreditSpread, ScreeningCriteria
 
 
 def iv_percentile_filter(spread: CreditSpread, criteria: ScreeningCriteria) -> bool:
