@@ -32,7 +32,7 @@ pip install -e ".[dev]"
 Optional: install [python-options-core](https://github.com/Tapanrajnayak/python-options-core) for Greeks calculation and spread evaluation:
 
 ```bash
-pip install -e ../python-options-core
+pip install git+https://github.com/Tapanrajnayak/python-options-core.git
 ```
 
 The system degrades gracefully without it.
